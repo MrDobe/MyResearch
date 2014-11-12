@@ -1,0 +1,28 @@
+package ustc.com.gradient;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+
+public class Input extends JFrame {
+	
+	/**
+	 * 为算法提供数据
+	 * @return 数据服务台
+	 * @throws Exception
+	 */
+	public static Service Read() throws Exception {
+
+		Service service = new Service();
+		BufferedReader in = new BufferedReader(new FileReader(
+				"src/ustc/com/gradient/abc.txt"));
+		ReadAndUpdate.ReadUpdate(in, service);
+
+		in.close();
+		return service;
+
+	}
+
+}
