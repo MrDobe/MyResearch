@@ -1,0 +1,48 @@
+package ustc.com.gradient;
+
+import java.util.ArrayList;
+
+public class Test {
+
+	public static void main(String[] args) throws Exception {
+
+		Service service = new Service();
+		service = Input.Read();
+		System.out.println("开始从文本文档读取数据..........");
+		System.out.println("读取数据为.......");
+		for (Object d : service.getAllDate()) {
+			Date dd = (Date) d;
+			System.out.println(dd);
+		}
+		System.out.println("\n");
+
+		System.out.println("算法开始导入数据.........");
+		System.out.println("导入数据为..........");
+		GradientAlgorithm al = new GradientAlgorithm();
+		al.setList(service);
+		for (Object d : service.getAllDate()) {
+			Date dd = (Date) d;
+			System.out.println(dd);
+		}
+		System.out.println("\n");
+
+		System.out.println("算法初始化参数........");
+		ArrayList list = new ArrayList();
+		list.add(2.0);
+		list.add(6.0);
+		double learningRate = 0.01;
+		double loss = 0.0001;
+		Parameter param = new Parameter(list, learningRate, loss);
+		System.out.println("系数：" + list + ",学习速率:" + learningRate + ",损失值:"
+				+ loss);
+		System.out.println("\n");
+
+		System.out.println("算法开始运行......");
+		System.out.println("\n");
+		System.out.println("拟合误差为:" + "\n");
+
+		al.algorithm(param);
+
+	}
+
+}
