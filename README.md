@@ -1,3 +1,3 @@
 MyRearch
 ========
-用向量梯度法实现对数据的拟合
+We apply a method called Stochastic Gradient Method to fit the date from Matlab Simulation.
