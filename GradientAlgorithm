@@ -1,0 +1,38 @@
+package ustc.com.gradient;
+
+import java.util.ArrayList;
+
+public class GradientAlgorithm {
+	
+	private ArrayList list = new ArrayList();		
+	/**
+	 * 获得数据
+	 * @return 数据
+	 */
+	public ArrayList getList() {
+		return list;
+	}	
+	/**
+	 * 初始化
+	 * @param list 初始化的数据
+	 */
+	public void setList(Service service) {		
+		this.list = service.getAllDate();
+	}	
+	
+	/**
+	 * 梯度下降法
+	 * @param param 参数类
+	 */
+	public void algorithm(Parameter param) {		
+		int i = 0;// 迭代因子
+		double error = 0;
+		int size = param.getW().size();		
+		do {
+			Iterative.IterativeOptimal(list, param, size);
+			error = Iterative.IterativeLossSum(list, param, size);
+			System.out.println("Error:" + error);
+			i++;
+		} while (i < 100 && error > param.getLoss());
+	}
+}
