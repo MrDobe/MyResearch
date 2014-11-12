@@ -1,0 +1,37 @@
+package ustc.com.gradient;
+
+import java.io.BufferedReader;
+import java.util.ArrayList;
+
+public class ReadAndUpdate {
+	
+	/**
+	 * 从文本文档读取数据，并上传到服务器	
+	 * @param in 文本文档位置
+	 * @param service 数据服务台
+	 * @throws Exception
+	 */
+	public static void ReadUpdate(BufferedReader in, Service service)
+			throws Exception {
+		String ss = "";
+		while ((ss = in.readLine()) != null) {
+			ArrayList<Double> list = new ArrayList();
+			Date date = new Date();
+			String[] s = ss.split(" ");
+			for (int i = 0; i < s.length - 1; i++) {
+				list.add(Double.parseDouble(s[i]));
+			}
+			Double[] temp1 = list.toArray(new Double[0]);
+			double[] temp2 = { 0, 0 };
+			for (int i = 0; i < s.length - 1; i++) {
+				temp2[i] = temp1[i].doubleValue();
+			}
+			date.setX(temp2);
+			date.setExp(Double.parseDouble(s[s.length - 1]));
+			service.addDate(date);
+
+		}
+
+	}
+
+}
