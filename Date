@@ -1,0 +1,51 @@
+package ustc.com.gradient;
+
+import java.util.Arrays;
+
+
+/**
+ * 数据类 * 
+ * @author Administrator
+ *
+ */
+public class Date {
+	/**
+	 * x表示观测值
+	 * y表示预测值
+	 */
+	private double[] x;
+	private double exp;
+
+	public double[] getX() {
+		return x;
+	}
+
+	public void setX(double[] x) {
+		this.x = x;
+	}
+
+	public double getExp() {
+		return exp;
+	}
+
+	public void setExp(double exp) {
+		this.exp = exp;
+	}
+	
+	public Date(){
+		
+	}
+
+	public Date(double[] x, double exp) {
+		super();
+		this.x = x;
+		this.exp = exp;
+	}
+
+	@Override
+	public String toString() {
+		return "Date [x=" + Arrays.toString(x) + ", exp=" + exp + "]";
+	}
+	
+
+}
