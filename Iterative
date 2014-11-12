@@ -1,0 +1,64 @@
+package ustc.com.gradient;
+
+import java.util.ArrayList;
+
+public class Iterative {
+	
+	/**
+	 * 通过迭代法求期望值
+	 * @param date 一个数据
+	 * @param param 参数
+	 * @param size 大小
+	 * @return 返回拟合值
+	 */
+	public static double IterativeExpection(Date date, Parameter param,int size) {		
+		double h = 0;
+		for (int k = 0; k < size; k++) {
+			h = h + date.getX()[k] * (double) param.getW().get(k);
+		}
+		return h;
+	}
+	
+	/**
+	 * 求取拟合代价	
+	 * @param list 所有数据
+	 * @param param 参数
+	 * @param size 大小
+	 * @return 总代价
+	 */
+	public static double IterativeLossSum(ArrayList list,Parameter param,int size){
+		double lossSum=0;
+		Date date=new Date();
+		for (int j = 0; j < list.size(); j++) {				
+			date = (Date) list.get(j);
+			double h=Iterative.IterativeExpection(date, param, size);
+			lossSum += (date.getExp() - h) * (date.getExp() - h);
+		}
+		return lossSum;
+	}
+	
+	/**
+	 * 求最优拟合参数	
+	 * @param list 所有数据
+	 * @param param 参数
+	 * @param size 大小
+	 */
+	public static void IterativeOptimal(ArrayList list,Parameter param,int size){
+		double err_sum = 0;
+		double temp1=0;
+		Date date=new Date();
+		for (int j = 0; j < list.size(); j++) {
+			ArrayList temp = new ArrayList();				
+			date = (Date) list.get(j);
+			double h=Iterative.IterativeExpection(date, param, size);
+			err_sum = date.getExp() - h;
+			for (int k = 0; k < size; k++) {
+				temp1 = (double)param.getW().get(k) + param.getLearningRate()
+						* err_sum * date.getX()[k];
+				temp.add(temp1);					
+			}
+			param.setW(temp);
+		}
+	}
+
+}
