@@ -1,0 +1,57 @@
+package ustc.com.gradient;
+
+import java.util.ArrayList;
+
+
+
+/**
+ * @param w 权重
+ * @param learningRate 学习速率
+ * @param loss 损失值
+ * @author Administrator
+ *
+ */
+public class Parameter {
+
+	private ArrayList w;
+	private double learningRate;
+	private double loss;
+
+	public ArrayList getW() {
+		return w;
+	}
+
+	public void setW(ArrayList w) {
+		this.w = w;
+	}
+
+	public double getLearningRate() {
+		return learningRate;
+	}
+
+	public void setLearningRate(double learningRate) {
+		this.learningRate = learningRate;
+	}
+
+	public double getLoss() {
+		return loss;
+	}
+
+	public void setLoss(double loss) {
+		this.loss = loss;
+	}
+
+	public Parameter(ArrayList w, double learningRate, double loss) {
+		super();
+		this.w = w;
+		this.learningRate = learningRate;
+		this.loss = loss;
+	}
+
+	@Override
+	public String toString() {
+		return "Parameter [w=" + w + ", learningRate=" + learningRate
+				+ ", loss=" + loss + "]";
+	}
+
+}
