@@ -1,0 +1,67 @@
+package ustc.com.gradient;
+
+import java.util.ArrayList;
+
+public class Service {
+
+//	public static ArrayList dates=new ArrayList();
+	private ArrayList dates=new ArrayList();
+	
+	/**
+	 * 获取数据
+	 * @param i 位置
+	 * @return
+	 */
+	public Date getDateByIndex(int i){
+		if(dates!=null && dates.size()>0){
+			Date date=(Date)this.dates.get(i);
+			return date;
+		}
+		return null;
+	}
+	/**
+	 * 获取所有数据
+	 * @return 所有数据
+	 */
+	public ArrayList getAllDate(){
+		return dates;
+	}
+
+	/**
+	 * 增加一个数据 
+	 * @param date 用于算法的数据
+	 */
+	public void addDate(Date... date) {
+		for(Date d:date){
+			this.dates.add(d);			
+		}		
+	}
+
+	/**
+	 * 删除数据 
+	 * @param x 测量值
+	 */
+	public boolean deleteDate(int i) {
+		if(dates!=null && dates.size()>0){
+			Date date=this.getDateByIndex(i);
+			if(date==null){
+				return false;
+			}
+			dates.remove(i);
+			return true;			
+		}
+		return false;
+	}
+
+	/**
+	 * 删除数据 
+	 * 重载+1	
+	 * @param date  数据
+	 */
+	public boolean deleteDate(Date date) {
+		int i = dates.indexOf(date);
+		return this.deleteDate(i);
+	}
+	
+
+}
